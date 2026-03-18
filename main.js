@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", (function () {
 
     if (document.querySelector("#programs-slider")) {
         a = new Splide("#programs-slider", {
-            type: "loop", perPage: 3, gap: "1.5rem", padding: "1rem", pagination: !0, arrows: !1, breakpoints: { 1280: { perPage: 3 }, 1024: { perPage: 3 }, 768: { perPage: 2 }, 640: { perPage: 1, padding: "0.5rem", arrows: !0, pagination: !0 } }
+            type: "loop", perPage: 3, gap: "1.5rem", padding: "1rem", pagination: !0, arrows: !0, breakpoints: { 1280: { perPage: 3 }, 1024: { perPage: 3 }, 768: { perPage: 2 }, 640: { perPage: 1, padding: "0.5rem", arrows: !0, pagination: !0 } }
         }).mount();
     }
 
