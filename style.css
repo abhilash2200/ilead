@@ -172,6 +172,29 @@
     transform: translateX(-50%);
 }
 
+@media (max-width: 767px) {
+    #programs-slider.is-static .splide__track {
+        overflow: visible !important;
+    }
+
+    #programs-slider.is-static .splide__list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem;
+        transform: none !important;
+    }
+
+    #programs-slider.is-static .splide__slide {
+        width: 100% !important;
+        transform: none !important;
+    }
+
+    #programs-slider.is-static .splide__arrows,
+    #programs-slider.is-static .splide__pagination {
+        display: none !important;
+    }
+}
+
 /* ===== BENTO BOX GRID ===== */
 .bento-grid {
     display: grid;

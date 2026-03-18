@@ -20,9 +20,36 @@ document.addEventListener("DOMContentLoaded", (function () {
     }
 
     if (document.querySelector("#programs-slider")) {
-        a = new Splide("#programs-slider", {
-            type: "loop", perPage: 3, gap: "1.5rem", padding: "1rem", pagination: !0, arrows: !0, breakpoints: { 1280: { perPage: 3 }, 1024: { perPage: 3 }, 768: { perPage: 2 }, 640: { perPage: 1, padding: "0.5rem", arrows: !0, pagination: !0 } }
-        }).mount();
+        const mql = window.matchMedia("(min-width: 768px)");
+
+        const syncProgramsSlider = () => {
+            const root = document.querySelector("#programs-slider");
+            if (!root) return;
+
+            if (mql.matches) {
+                root.classList.remove("is-static");
+                if (!a) {
+                    a = new Splide("#programs-slider", {
+                        type: "loop",
+                        perPage: 3,
+                        gap: "1.5rem",
+                        padding: "1rem",
+                        pagination: !0,
+                        arrows: !0,
+                        breakpoints: { 1280: { perPage: 3 }, 1024: { perPage: 3 }, 768: { perPage: 2 } }
+                    }).mount();
+                }
+            } else {
+                root.classList.add("is-static");
+                if (a) {
+                    a.destroy(!0);
+                    a = void 0;
+                }
+            }
+        };
+
+        syncProgramsSlider();
+        mql.addEventListener ? mql.addEventListener("change", syncProgramsSlider) : mql.addListener(syncProgramsSlider);
     }
 
     if (document.querySelector("#video-testimonial-slider")) {
