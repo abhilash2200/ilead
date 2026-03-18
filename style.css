@@ -22,6 +22,34 @@
     font-display: swap
 }
 
+/* Modern underline highlight (clip-path) */
+.clip-underline {
+    position: relative;
+    display: inline-block;
+    padding: 0 .06em .22em;
+}
+
+.clip-underline::after {
+    content: "";
+    position: absolute;
+    left: -0.04em;
+    right: -0.04em;
+    bottom: 0.02em;
+    height: 0.52em;
+    background: #c4161c; /* brandRed */
+    z-index: -1;
+    border-radius: 10px;
+    transform: rotate(-1.2deg);
+    transform-origin: 50% 80%;
+    clip-path: polygon(0% 62%, 3% 52%, 97% 44%, 100% 55%, 100% 100%, 0% 100%);
+}
+
+@supports not (clip-path: polygon(0 0)) {
+    .clip-underline::after {
+        clip-path: none;
+    }
+}
+
 .hero-section {
     background-image: url('assets/bvanner.webp');
     background-size: cover;
@@ -171,8 +199,27 @@
     left: 50%;
     transform: translateX(-50%);
 }
+#video-testimonial-slider .splide__pagination__page {
+    bottom: -2rem !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+    #ecosystem-slider-list .splide__pagination__page {
+        bottom: -2rem !important;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
 
 @media (max-width: 767px) {
+    #programs-slider.is-static {
+        visibility: visible !important;
+    }
+
     #programs-slider.is-static .splide__track {
         overflow: visible !important;
     }
