@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", (function () {
                         perPage: 3,
                         gap: "1.5rem",
                         padding: "1rem",
-                        pagination: !0,
+                        pagination: !1,
                         arrows: !0,
                         breakpoints: { 1280: { perPage: 3 }, 1024: { perPage: 3 }, 768: { perPage: 2 } }
                     }).mount();

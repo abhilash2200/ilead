@@ -121,10 +121,6 @@
     fill: #00549E !important
 }
 
-#programs-slider .splide__pagination__page.is-active {
-    background: #f97316
-}
-
 @media (max-width:768px) {
 
     #academic-slider .splide__arrow--next,
@@ -207,12 +203,19 @@
 }
 
 @media (max-width: 768px) {
-    #ecosystem-slider-list .splide__pagination__page {
-        bottom: -2rem !important;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  #ecosystem-slider .splide__pagination__page {
+    position: relative;
+    bottom: -2rem !important;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    background: #cbd5e1 !important;
+    transition: all 0.3s ease;
+  }
+
+  #ecosystem-slider .splide__pagination__page.is-active {
+    background: #ffffff !important;
+    transform: translateX(-50%) scale(1.4);
+  }
 }
 
 @media (max-width: 767px) {
