@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="dns-prefetch" href="https://widgets.nopaperforms.com" />
     <link rel="preload" href="assets/fonts/Gilroy-Regular.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="assets/bvanner.webp" as="image" />
+    <link rel="preload" href="assets/cyber-bvanner.webp" as="image" fetchpriority="high" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
         media="print" onload="this.media='all'" />
@@ -55,7 +57,7 @@
         <div class="container mx-auto">
             <div class="flex items-center justify-between gap-2 md:gap-4">
                 <div>
-                    <img src="assets/logo.png" alt="ilead">
+                    <img src="assets/logo.png" alt="ilead" width="161" height="55" decoding="async">
                 </div>
                 <div>
                     <button
@@ -73,7 +75,7 @@
         class="md:bg-[url('assets/cyber-bvanner.webp')] pt-8 md:pt-0 bg-[url('assets/banner-mob-cyber.webp')] bg-cover bg-center min-h-[auto] py-12 lg:min-h-[650px] lg:py-0 lg:pt-20 pt-0 flex items-center relative -mt-1 overflow-x-hidden">
         <div class="container mx-auto px-4 relative z-20 w-full">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
-                <div class="text-white lg:w-3/5 w-full text-left" data-aos="fade-right" data-aos-duration="1000">
+                <div class="text-white lg:w-3/5 w-full text-left" data-aos="fade-right" data-aos-duration="800">
                     <h2 class="text-[18px] leading-tight md:text-2xl font-medium md:mb-2">
                         Admission Open 2026-27
                     </h2>
@@ -118,7 +120,7 @@
                 </div>
 
                 <div class="w-full lg:w-[400px] bg-white rounded-xl shadow-2xl border-2 border-brandOrange overflow-hidden mx-auto"
-                    data-aos="fade-left" data-aos-duration="1000">
+                    data-aos="fade-left" data-aos-duration="800">
                     <div class="p-5 md:p-6">
                         <h3 class="text-[22px] md:text-xl font-bold text-black mb-4">
                             Request for Call Back
@@ -308,7 +310,7 @@
                             class="w-[120px] h-[60px] md:w-[200px] md:h-[100px] rounded-[20px] overflow-hidden shadow-sm flex-shrink-0 cursor-pointer">
                             <img src="assets/versicle.webp" alt="Campus Picture 4"
                                 class="w-full h-full object-cover transform hover:scale-110 transition duration-700 ease-in-out"
-                                loading="lazy" decoding="async">
+                                loading="lazy" decoding="async" width="200" height="100">
                         </div>
                     </div>
 
