@@ -1,0 +1,89 @@
+# ------------------------------------
+# 1. Enable Rewrite Engine
+# ------------------------------------
+RewriteEngine On
+
+# ------------------------------------
+# 2. Force HTTPS
+# ------------------------------------
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ------------------------------------
+# 3. Remove www (optional - keep consistency)
+# ------------------------------------
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# ------------------------------------
+# 4. Clean URLs (remove .html extension)
+# ------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# ------------------------------------
+# 5. GZIP Compression
+# ------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+# ------------------------------------
+# 6. Browser Caching
+# ------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Images
+  ExpiresByType image/jpg "access 1 year"
+  ExpiresByType image/jpeg "access 1 year"
+  ExpiresByType image/png "access 1 year"
+  ExpiresByType image/webp "access 1 year"
+  ExpiresByType image/gif "access 1 year"
+  ExpiresByType image/svg+xml "access 1 year"
+
+  # CSS, JS
+  ExpiresByType text/css "access 1 month"
+  ExpiresByType application/javascript "access 1 month"
+
+  # Fonts
+  ExpiresByType font/ttf "access 1 year"
+  ExpiresByType font/woff "access 1 year"
+  ExpiresByType font/woff2 "access 1 year"
+</IfModule>
+
+# ------------------------------------
+# 7. Disable Directory Browsing
+# ------------------------------------
+Options -Indexes
+
+# ------------------------------------
+# 8. Security Headers
+# ------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ------------------------------------
+# 9. Block Sensitive Files
+# ------------------------------------
+<FilesMatch "\.(env|ini|log|sh|sql|bak)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ------------------------------------
+# 10. Default Index (important if landing page)
+# ------------------------------------
+DirectoryIndex index.html index.php index.aspx
+
+# ------------------------------------
+# 11. Prevent Hotlinking (optional)
+# ------------------------------------
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?mahabirpaints\.com/ [NC]
+RewriteRule \.(jpg|jpeg|png|webp|gif)$ - [F]
